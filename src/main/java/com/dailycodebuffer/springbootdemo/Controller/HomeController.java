@@ -1,14 +1,23 @@
 package com.dailycodebuffer.springbootdemo.Controller;
 
+import com.dailycodebuffer.springbootdemo.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@ResponseBody
+@RestController
 public class HomeController {
     @RequestMapping("/")
     public String home(){
         return "Hello World";
+    }
+
+//    @RequestMapping(value="/user",method= RequestMethod.GET)
+    @PostMapping("/testPost")
+    public User user(){
+        User temp_usr = new User();
+        temp_usr.setId("12");
+        temp_usr.setName("Archit");
+        temp_usr.setEmailId("archit32@fgmaos");
+        return temp_usr;
     }
 }
