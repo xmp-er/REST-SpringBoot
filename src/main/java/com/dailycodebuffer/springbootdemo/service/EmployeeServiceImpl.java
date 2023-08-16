@@ -18,4 +18,17 @@ public class EmployeeServiceImpl implements EmployeeService{
         employees.add(emp);
         return emp;
     }
+
+    public List<Employee> getAllRecords(){
+        return employees;
+    }
+
+    public Employee getEmployeeId(String id){
+        for(var i:employees){
+            if(i.getEmployeeId().equals(id)){
+                return i;
+            }
+        }
+        return null;
+    }
 }
