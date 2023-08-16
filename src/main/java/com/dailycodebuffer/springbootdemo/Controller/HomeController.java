@@ -20,4 +20,8 @@ public class HomeController {
         temp_usr.setEmailId("archit32@fgmaos");
         return temp_usr;
     }
+    @GetMapping("/usr/{id}/{mp}")
+    public String idHandler(@PathVariable String id,@PathVariable String mp){
+        return "The id is "+id+" and the mp varaible has the value "+mp;
+    }
 }
