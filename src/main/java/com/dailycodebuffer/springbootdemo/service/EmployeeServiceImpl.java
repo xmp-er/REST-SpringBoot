@@ -32,4 +32,10 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
         throw new RuntimeException("Employee with the id " + id + " was not found");
     }
+
+    public String deleteEmployeeById(String id){
+        Employee e = getEmployeeId(id);
+        employees.remove(e);
+        return "Employee Deleted Succesfully";
+    }
 }

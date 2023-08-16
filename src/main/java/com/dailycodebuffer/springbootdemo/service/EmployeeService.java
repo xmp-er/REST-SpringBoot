@@ -9,4 +9,5 @@ public interface EmployeeService {
     public Employee save(Employee emp);
     public List<Employee> getAllRecords();
     public Employee getEmployeeId(String id);
+    public String deleteEmployeeById(String id);
 }
