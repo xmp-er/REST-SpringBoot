@@ -21,7 +21,15 @@ public class HomeController {
         return temp_usr;
     }
     @GetMapping("/usr/{id}/{mp}")
-    public String idHandler(@PathVariable String id,@PathVariable String mp){
-        return "The id is "+id+" and the mp varaible has the value "+mp;
+    public String idHandler(@PathVariable String id,@PathVariable("mp") String mp1){
+        return "The id is "+id+" and the mp varaible has the value "+mp1;
+    }
+
+    @RequestMapping(value="/test_mapping_reqParam")//query parameters handling
+    public String test_reqParam(@RequestParam(name="kek",required=true) String a,
+                                @RequestParam(name="isit",required=false) String b,
+                                @RequestParam String c,
+                                @RequestParam(defaultValue = "Default_Value") String d){
+        return "The variables are "+a+" "+b+" "+c+" "+d;
     }
 }
