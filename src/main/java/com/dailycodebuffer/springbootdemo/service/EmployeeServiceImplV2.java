@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,16 +30,27 @@ public class EmployeeServiceImplV2 implements EmployeeService{
 
     @Override
     public List<Employee> getAllRecords() {
-        return null;
+        List<EmployeeEntity> empEntityList= empRepo.findAll();
+        List<Employee> e = new ArrayList<>();
+        for(var i:empEntityList){
+            Employee temp = new Employee();
+            BeanUtils.copyProperties(i,temp);
+            e.add(temp);
+        }
+        return e;
     }
 
     @Override
     public Employee getEmployeeId(String id) {
-        return null;
+        EmployeeEntity e = empRepo.findById(id).get();
+        Employee temp = new Employee();
+        BeanUtils.copyProperties(e,temp);
+        return temp;
     }
 
     @Override
     public String deleteEmployeeById(String id) {
-        return null;
+        empRepo.deleteById(id);
+        return "Entry with the id " + id + " succesfully deleted";
     }
 }
